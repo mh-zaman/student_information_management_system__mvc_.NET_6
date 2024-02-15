@@ -1,0 +1,90 @@
+﻿@model List<StudentInfo.Models.Domain.Student>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-5">
+
+    <a asp-area="" asp-controller="Student" asp-action="Add">
+        <button class="btn btn-success">Add New Student Info</button>
+    </a>
+
+    <h2 class="mt-5">List of Students</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Class</th>
+                <th>DOB</th>
+                <th>Gender</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+            <tr>
+            <td>@student.Name</td>
+                    <td>
+                        @switch (student.ClassId)
+                        {
+                            case 1:
+                                <text>One</text>
+                                break;
+                            case 2:
+                                <text>Two</text>
+                                break;
+                            case 3:
+                                <text>Three</text>
+                                break;
+                            case 4:
+                                <text>Four</text>
+                                break;
+                            case 5:
+                                <text>Five</text>
+                                break;
+                            case 6:
+                                <text>Six</text>
+                                break;
+                            case 7:
+                                <text>Seven</text>
+                                break;
+                            case 8:
+                                <text>Eight</text>
+                                break;
+                            case 9:
+                                <text>Nine</text>
+                                break;
+                            case 10:
+                                <text>Ten</text>
+                                break;
+                            default:
+                                <text>Unknown</text> 
+                                break;
+                        }
+                    </td>
+
+            <td>@student.DateOfBirth.ToShortDateString()</td>
+            <td>
+                        @if (student.Gender == 0)
+                        {
+                            <text>Male</text>
+                        }
+                        else
+                        {
+                            <text>Female</text>
+                        }
+            </td>
+            <td>
+            <a asp-area="" asp-controller="Student" asp-action="Edit" asp-route-id="@student.Id" style="color: sandybrown;">Edit</a> |
+            <a asp-area="" asp-controller="Student" asp-action="Details" asp-route-id="@student.Id" style="color: green;">Details</a>
+            <form asp-area="" asp-controller="Student" asp-action="Delete" method="post" onsubmit="return confirm('Are you sure you want to delete this student?');">
+             <input type="hidden" name="id" value="@student.Id" />
+             <button type="submit" class="btn btn-link" style="color: red; text-decoration: none;">Delete</button>
+            </form>
+            </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

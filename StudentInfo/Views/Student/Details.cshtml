@@ -1,0 +1,71 @@
+﻿@model StudentInfo.Models.Domain.Student
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<div class="container mt-5">
+    <h2>Student Details</h2>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">ID:</dt>
+        <dd class="col-sm-9">@Model.Id</dd>
+
+        <dt class="col-sm-3">Name:</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+
+        <dt class="col-sm-3">Gender:</dt>
+        <dd class="col-sm-9">@if (Model.Gender == 0)
+        {<text>Male</text> }
+    else
+    { <text>Female</text>}</dd>
+
+        <dt class="col-sm-3">Date of Birth:</dt>
+        <dd class="col-sm-9">@Model.DateOfBirth.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Class:</dt>
+        <dd class="col-sm-9">
+            @switch (Model.ClassId)
+            {
+                case 1:
+                    <text>One</text>
+                    break;
+                case 2:
+                    <text>Two</text>
+                    break;
+                case 3:
+                    <text>Three</text>
+                    break;
+                case 4:
+                    <text>Four</text>
+                    break;
+                case 5:
+                    <text>Five</text>
+                    break;
+                case 6:
+                    <text>Six</text>
+                    break;
+                case 7:
+                    <text>Seven</text>
+                    break;
+                case 8:
+                    <text>Eight</text>
+                    break;
+                case 9:
+                    <text>Nine</text>
+                    break;
+                case 10:
+                    <text>Ten</text>
+                    break;
+                default:
+                    <text>Unknown</text>
+                    break;
+            }
+    </dd>
+
+    <dt class="col-sm-3">Created Date:</dt>
+    <dd class="col-sm-9">@Model.CreatedDate.ToString("yyyy-MM-dd HH:mm:ss")</dd>
+
+    <dt class="col-sm-3">Modification Date:</dt>
+    <dd class="col-sm-9">@Model.ModificationDate.ToString("yyyy-MM-dd HH:mm:ss")</dd>
+</dl>
+</div>
